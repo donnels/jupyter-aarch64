@@ -2,12 +2,12 @@
 Running jupyter on arm64/aarch64
 
 ## Requirements
-required: must run on a pinebook pro
-optional: run on a raspi
-optional: run on a (new) mac
+- required: must run on a pinebook pro
+- optional: run on a raspi
+- optional: run on a (new) mac
 
 ## Backstory
-I did not like the official R jupyter docker files so I decided to make my own to see how far I get with it. The aim is to run it on the laptop I am typing this on: a pinebook pro.
+I did not like the official R jupyter docker files so I decided to make my own to see how far I get with it. The aim is to run it on the laptop I am typing this on: a pinebook pro. I might revisit Rocker instead of goin it on my own.
 
 ## Why R?
 As R has some good graphing capabilities I would like to explore I decided to understand what it requires to run in order to run it with confidence. R is a good alternative for ingesting data and analysing it.
