@@ -4,16 +4,17 @@ ENV NB_USER rstudio
 ENV NB_UID 1000
 ENV HOME /home/rstudio
 
-RUN apt-get update && \
-    apt-get -y install python3-pip \
-    r-base-core r-base-dev r-api-3.5 && \
-    useradd -m ${NB_USER} -u ${NB_UID} && \
-    mkdir -p /usr/local/lib/R && chown ${NB_USER} /usr/local/lib/R && \
-    pip3 install --no-cache-dir notebook==5.2 && \
-    apt-get purge && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
+RUN apt-get update \
+    && apt-get -y install python3-pip \
+        aptitude mc \
+        r-base-core r-api-3.5 \
+    && pip3 install --no-cache-dir notebook==5.2 \
+    && apt-get purge \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+RUN useradd -m ${NB_USER} -u ${NB_UID} \
+    && mkdir -p /usr/local/lib/R \
+    && chown -R ${NB_USER} /usr/local/lib/R 
 WORKDIR ${HOME}
 
 FROM base-setup
