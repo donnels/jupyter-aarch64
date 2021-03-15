@@ -4,6 +4,7 @@ ENV NB_USER rstudio
 ENV NB_UID 1000
 ENV HOME /home/rstudio
 
+RUN useradd -m ${NB_USER} -u ${NB_UID}
 RUN apt-get update \
     && apt-get -y install python3-pip \
         aptitude mc \
@@ -12,12 +13,11 @@ RUN apt-get update \
     && apt-get purge \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-RUN useradd -m ${NB_USER} -u ${NB_UID} \
-    && mkdir -p /usr/local/lib/R \
+RUN mkdir -p /usr/local/lib/R \
     && chown -R ${NB_USER} /usr/local/lib/R 
 WORKDIR ${HOME}
 
-FROM base-setup
+FROM base-setup as base-setup-r
 USER ${NB_USER}
 
 # Set up R Kernel for Jupyter
@@ -25,6 +25,7 @@ RUN R --quiet -e "install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 
 RUN R --quiet -e "devtools::install_github('IRkernel/IRkernel')"
 RUN R --quiet -e "IRkernel::installspec()"
 
+FROM base-setup-r
 # Additional packages for demo: 'TDA','TDAmapper','igraph'
 USER root
 RUN mkdir /var/lib/apt/lists/partial && \
