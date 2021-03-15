@@ -8,7 +8,7 @@ RUN useradd -m ${NB_USER} -u ${NB_UID}
 RUN apt-get update \
     && apt-get -y install python3-pip \
         aptitude mc \
-        r-base-core r-api-3.5 \
+        r-base-core r-base-dev r-api-3.5 \
     && pip3 install --no-cache-dir notebook==5.2 \
     && apt-get purge \
     && apt-get clean \
