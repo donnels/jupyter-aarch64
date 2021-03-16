@@ -1,6 +1,19 @@
 # jupyter-aarch64
 Running jupyter on arm64/aarch64
 
+## STATUS - Work in Progress
+- Base Docker Build working
+-- Debian
+--- base config for user etc done
+-- python
+--- done
+-- jupyter
+--- installed
+-- R-base
+
+- R installation
+-- ongoing
+
 ## Requirements
 - required: must run on a pinebook pro
 - optional: run on a raspi
