@@ -4,6 +4,7 @@ FROM debian:stable-slim as base-setup
     ENV NB_USER rstudio
     ENV NB_UID 1000
     ENV HOME /home/rstudio
+    ENV R_LIBS_USER /usr/local/lib/R/site-library
 
 # prep user and homedir and install location
     RUN useradd -m ${NB_USER} -u ${NB_UID} \
@@ -16,10 +17,10 @@ FROM debian:stable-slim as base-setup
             locales \
             aptitude mc \
  		    ed less vim-tiny \
-    		wget curl ca-certificates \
+    		wget curl ca-certificates git \
             libssl-dev libunwind-dev \
     		fonts-texgyre \
-            r-base-core r-base-dev r-api-3.5 \
+            r-base-core r-base-dev r-api-3.5 r-cran-devtools \
         && apt-get purge && apt-get clean && rm -rf /var/lib/apt/lists/*
     RUN python3 -m pip install --no-cache-dir \
             notebook==5.2 
