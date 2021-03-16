@@ -21,7 +21,7 @@ Running jupyter on arm64/aarch64
 - optional: run on a (new) mac
 
 ## Backstory
-I did not like the official R jupyter docker files so I decided to make my own to see how far I get with it. The aim is to run it on the laptop I am typing this on: a pinebook pro. I might revisit Rocker instead of goin it on my own.
+I did not like the official R jupyter docker files so I decided to make my own to see how far I get with it. The aim is to run it on the laptop I am typing this on: a pinebook pro. I might revisit Rocker instead of going it on my own.
 
 ## Why R?
 As R has some good graphing capabilities I would like to explore I decided to understand what it requires to run in order to run it with confidence. R is a good alternative for ingesting data and analysing it.
@@ -33,7 +33,7 @@ The alternative of installing large apps on an individual device without docker 
 Docker allows a basic level of portability and abstraction.
 ### Why mutlistage docker builds
 Because I'm tinkering with this it helps to be able to go step by step.
-multistage docker allows this approach so that errors in one part of the build can more easily be fixed and the interim containers can be built and looked at individually ir required.
+multistage docker allows this approach so that errors in one part of the build can more easily be fixed and the interim containers can be built and looked at individually if required.
 
 ## Why Jupyter?
 Similar to docker it allows a simple form of abstraction and portability.
