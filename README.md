@@ -13,7 +13,12 @@ Running jupyter on arm64/aarch64
   - installed
 
 - R installation/config
-  - ongoing
+  - seems to be done (proof is in the pudding)
+
+- running together (smoothly)
+    - work in progress
+- size optimized
+    - to be done
 
 ## Requirements
 - required: must run on a pinebook pro
