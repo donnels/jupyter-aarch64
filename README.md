@@ -1,7 +1,7 @@
 # jupyter-aarch64
 Running jupyter on arm64/aarch64
 
-## STATUS - Work in Progress
+## STATUS - Work in Progress (not ready for release yet)
 - Base Docker Build working
   - Debian
     - base config for user etc done
