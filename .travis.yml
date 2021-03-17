@@ -4,7 +4,7 @@ services:
     - docker
 
 env:
-    - REPO="donnellans/html2x" CONTAINER="test"
+    - REPO="donnellans/jupyter-r-arm64" CONTAINER="test"
 
 before_install:
     - docker pull debian:stable-slim
