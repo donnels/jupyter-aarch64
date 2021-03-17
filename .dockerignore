@@ -1,5 +1,6 @@
 .git/
 .dockerignore
 .gitconfig
+.travis.yml
 Dockerfile
 README.md

@@ -1,0 +1,20 @@
+language: minimal
+
+services:
+    - docker
+
+env:
+    - REPO="donnellans/html2x" CONTAINER="test"
+
+before_install:
+    - docker pull debian:stable-slim
+    - docker build -t $REPO .
+
+script:
+    - docker run --name "$CONTAINER" $REPO
+
+after_error:
+    - docker logs $CONTAINER
+
+after_failure:
+    - docker logs $CONTAINER
