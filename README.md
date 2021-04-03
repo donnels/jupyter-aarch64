@@ -1,5 +1,5 @@
-# jupyter-aarch64
-Running jupyter on arm64/aarch64
+# jupyter-r-aarch64
+Running r on jupyter in docker on arm64/aarch64
 
 ## STATUS - Work in Progress (not ready for release yet)
 - Base Docker Build working
