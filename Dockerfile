@@ -49,6 +49,7 @@ FROM base-setup-r
         && apt-get update \
         && apt-get -y install \
             libgmp-dev libmpfr-dev \
+            lynx \
         && apt-get purge && apt-get clean && rm -rf /var/lib/apt/lists/*
 
     USER ${NB_USER}

@@ -38,7 +38,7 @@ The alternative of installing large apps on an individual device without docker 
 Docker allows a basic level of portability and abstraction.
 ### Why mutlistage docker builds
 Because I'm tinkering with this it helps to be able to go step by step.
-multistage docker allows this approach so that errors in one part of the build can more easily be fixed and the interim containers can be built and looked at individually if required.
+multistage docker allows this approach so that errors in one part of the build can more easily be fixed and the interim containers can be built and looked at individually if required. Also later when one has finished tinkering multistage allows products from individual stages to be exported to the next stage a opposed to the full build environment being present in the end product.
 
 ## Why Jupyter?
 Similar to docker it allows a simple form of abstraction and portability.
