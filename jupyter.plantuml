@@ -1,0 +1,31 @@
+@startuml
+title Jupyter architecture
+footer (C)2021 Sean Donnellan
+skinparam BackgroundColor #fff/aaf
+skinparam fileBackgroundColor #transparent
+
+actor user
+card browser #fff/blue
+rectangle docker {
+    card "Notebook Server" as server #fff/green
+    card kernel #fff/green
+    file notebook #fff/yellow
+}
+file notebook as notebookLocal #fff/yellow
+user -> browser
+browser -> server
+server <-> kernel
+server <--> notebook
+notebookLocal <.> notebook : via Docker volume
+user --[hidden] notebookLocal
+note bottom of notebook
+The contents of the container are
+lost when the container is stopped
+Only the files shared through a volume remain
+endnote
+note bottom of notebookLocal
+This file can be:
+loaded/saved
+through the use of a volume mounted to the container
+endnote
+@enduml
