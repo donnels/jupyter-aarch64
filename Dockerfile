@@ -20,7 +20,7 @@ FROM debian:stable-slim as base-setup
     		wget curl ca-certificates git \
             libssl-dev libunwind-dev \
     		fonts-texgyre \
-            r-base-core r-base-dev r-api-3.5 r-cran-devtools \
+            r-base-core r-base-dev r-api-4.0 r-cran-devtools \
         && apt-get purge && apt-get clean && rm -rf /var/lib/apt/lists/*
     RUN python3 -m pip install --no-cache-dir \
             notebook==5.2 
