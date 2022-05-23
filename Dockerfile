@@ -15,7 +15,6 @@ FROM debian:stable-slim as base-setup
         && apt-get -y install \
             python3 python3-pip \
             locales \
-            aptitude mc \
  		    ed less vim-tiny \
     		wget curl ca-certificates git \
             libssl-dev libunwind-dev \
@@ -54,6 +53,8 @@ FROM base-setup-r
 
     USER ${NB_USER}
     RUN R --quiet -e "install.packages(c('TDA','TDAmapper','igraph'))"
+    #packages for tetfile.r
+    RUN R --quiet -e "install.packages(c('tidyverse','hrbrthemes','kableExtra','knittr','viridis'))"
 
 # Make sure the contents of our repo are in ${HOME}
     COPY . ${HOME}

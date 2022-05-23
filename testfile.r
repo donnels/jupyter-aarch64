@@ -1,3 +1,4 @@
+#!/usr/bin/Rscript
 # Libraries
 library(tidyverse)
 library(hrbrthemes)
