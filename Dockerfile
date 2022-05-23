@@ -41,7 +41,7 @@ RUN R --quiet -e "install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 
 RUN R --quiet -e "devtools::install_github('IRkernel/IRkernel')"
 RUN R --quiet -e "IRkernel::installspec()"
 
-FROM base-setup-r
+FROM base-setup-r as r-extras
 # Additional packages for demo: 'TDA','TDAmapper','igraph'
     USER root
     RUN mkdir /var/lib/apt/lists/partial \
@@ -53,6 +53,9 @@ FROM base-setup-r
 
     USER ${NB_USER}
     RUN R --quiet -e "install.packages(c('TDA','TDAmapper','igraph'))"
+
+FROM r-extras as r-tests-deps
+
     #packages for tetfile.r
     RUN R --quiet -e "install.packages(c('tidyverse','hrbrthemes','kableExtra','knittr','viridis'))"
 
