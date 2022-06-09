@@ -18,7 +18,7 @@ FROM debian:stable-slim as base-setup
  		    ed less vim-tiny \
     		wget curl ca-certificates git \
             libssl-dev libunwind-dev \
-    		fonts-texgyre \
+    		fonts-texgyre ghostscript \
             r-base-core r-base-dev r-api-4.0 r-cran-devtools \
         && apt-get purge && apt-get clean && rm -rf /var/lib/apt/lists/*
     RUN python3 -m pip install --no-cache-dir \
@@ -37,7 +37,15 @@ FROM base-setup as base-setup-r
     USER ${NB_USER}
 
 # Set up R Kernel for Jupyter
-RUN R --quiet -e "install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 'pbdZMQ', 'devtools', 'uuid', 'digest'))"
+RUN R --quiet -e "install.packages(c(\
+    'repr', \
+    'IRdisplay', \
+    'evaluate', \
+    'crayon', \
+    'pbdZMQ', \
+    'devtools', \
+    'uuid', \
+    'digest'))"
 RUN R --quiet -e "devtools::install_github('IRkernel/IRkernel')"
 RUN R --quiet -e "IRkernel::installspec()"
 
@@ -50,14 +58,28 @@ FROM base-setup-r as r-extras
             libgmp-dev libmpfr-dev \
             lynx \
         && apt-get purge && apt-get clean && rm -rf /var/lib/apt/lists/*
-
     USER ${NB_USER}
-    RUN R --quiet -e "install.packages(c('TDA','TDAmapper','igraph'))"
+    RUN R --quiet -e "install.packages(c(\
+        'TDA',\
+        'TDAmapper',\
+        'igraph'))"
 
-FROM r-extras as r-tests-deps
-
-    #packages for tetfile.r
-    RUN R --quiet -e "install.packages(c('tidyverse','hrbrthemes','kableExtra','knittr','viridis'))"
+FROM r-extras as r-examples-deps
+    #packages for examples
+    RUN R --quiet -e "install.packages(c(\
+        'tidyverse',\
+        'hrbrthemes',\
+        'kableExtra',\
+        'knittr',\
+        'stringr',\
+        'leaflet',\
+        'htmlwidgets',\
+        'DT',\
+        'jpeg',\
+        'maps',\
+        'geosphere',\
+        'grid',\
+        'viridis'))"
 
 # Make sure the contents of our repo are in ${HOME}
     COPY . ${HOME}
