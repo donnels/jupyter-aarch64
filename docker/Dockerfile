@@ -78,10 +78,10 @@ FROM r-extras as r-examples-deps
         'jpeg',\
         'maps',\
         'geosphere',\
-        'grid',\
+	'grid',\
 	'readxl',\
 	'openxlsx',\
-        'viridis'))"
+	'viridis'))"
 
 # Make sure the contents of our repo are in ${HOME}
     COPY . ${HOME}
