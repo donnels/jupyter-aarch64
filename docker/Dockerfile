@@ -67,19 +67,19 @@ FROM base-setup-r as r-extras
 FROM r-extras as r-examples-deps
     #packages for examples
     RUN R --quiet -e "install.packages(c(\
-        'tidyverse',\
-        'hrbrthemes',\
-        'kableExtra',\
-        'knittr',\
-        'stringr',\
-        'leaflet',\
-        'htmlwidgets',\
-        'DT',\
-        'jpeg',\
-        'maps',\
-        'geosphere',\
-        'grid',\
-        'viridis'))"
+    'tidyverse',\
+    'hrbrthemes',\
+    'kableExtra',\
+    'knittr',\
+    'stringr',\
+    'leaflet',\
+    'htmlwidgets',\
+    'DT',\
+    'jpeg',\
+    'maps',\
+    'geosphere',\
+    'grid',\
+    'viridis'))"
 
 # Make sure the contents of our repo are in ${HOME}
     COPY . ${HOME}
