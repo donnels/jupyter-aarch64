@@ -79,6 +79,8 @@ FROM r-extras as r-examples-deps
         'maps',\
         'geosphere',\
         'grid',\
+	'readxl',\
+	'openxlsx',\
         'viridis'))"
 
 # Make sure the contents of our repo are in ${HOME}
