@@ -72,6 +72,13 @@ FROM r-extras as r-examples-deps
     'kableExtra',\
     'knittr',\
     'stringr',\
+    'ggmap',\
+    'dplyr',\
+    'tidygeocoder',\
+    'tools',\
+    'readxl',\
+    'ggplot2',\
+    'openxlsx',\
     'leaflet',\
     'htmlwidgets',\
     'DT',\
