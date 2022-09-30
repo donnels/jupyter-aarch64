@@ -52,7 +52,8 @@ RUN R --quiet -e "IRkernel::installspec()"
 FROM base-setup-r as r-extras
 # Additional packages for demo: 'TDA','TDAmapper','igraph'
     USER root
-    RUN mkdir /var/lib/apt/lists/partial \
+    RUN mkdir -p /var/lib/apt/lists/partial \
+        && mkdir /data \
         && apt-get update \
         && apt-get -y install \
             libgmp-dev libmpfr-dev \
@@ -96,3 +97,4 @@ FROM r-extras as r-examples-deps
 
 # Run install.r if it exists
     RUN if [ -f install.r ]; then R --quiet -f install.r; fi
+    WORKDIR /data
