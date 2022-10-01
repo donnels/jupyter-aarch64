@@ -11,6 +11,7 @@ FROM debian:stable-slim as base-setup
         && usermod -a -G staff ${NB_USER} \
         && mkdir -p /usr/local/lib/R
 # prep base software
+    ARG DEBIAN_FRONTEND=noninteractive
     RUN apt-get update \
         && apt-get -y install \
             python3 python3-pip \
