@@ -18,7 +18,7 @@ FROM debian:stable-slim as base-setup
  		    ed less vim-tiny \
     		wget curl ca-certificates git \
             libssl-dev libunwind-dev \
-    		fonts-texgyre fonts-liberation fonts-liberation2 ghostscript \
+    		fontconfig fonts-texgyre fonts-liberation fonts-liberation2 ghostscript \
             r-base-core r-base-dev r-api-4.0 r-cran-devtools \
         && apt-get purge && apt-get clean && rm -rf /var/lib/apt/lists/*
     RUN python3 -m pip install --no-cache-dir \
